@@ -1,59 +1,52 @@
-# PromptHubFrontend
+# prompt-hub-frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.2.
+A personal POC built while following a French Angular training course. The goal is to reinforce modern Angular fundamentals through a real-world-like application — a platform for sharing and discovering AI prompts.
 
-## Development server
+> ⚠️ This is a learning project, not a production application.
 
-To start a local development server, run:
+## What I practiced
 
-```bash
-ng serve
-```
+- **Part 2** — Components, data display, inputs
+- **Part 3** — PrimeNG / PrimeFlex / PrimeIcons, theming, dark mode
+- **Part 4** — Services, HttpClient, Observables, environments
+- **Part 5** — Reactive forms, routing, CRUD
+- **Part 6** — Authentication (token, interceptor, guard)
+- **Part 7** — localStorage, linkedSignal, toasts, loaders
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Tech stack
 
-## Code scaffolding
+- **Angular** (modern / standalone)
+- **TypeScript**
+- **REST API** — connects to a NestJS backend (see below)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+## Getting started
 
 ```bash
-ng build
+npm install
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+App runs at `http://localhost:4200`.  
+The backend must also be running on port `3000`.
 
-## Running unit tests
+**Backend repo:** [prompt-hub-backend](https://github.com/GaetanRouzies/prompt-hub-backend)
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Branch structure
 
-```bash
-ng test
-```
+Each branch maps to a stage of the course:
 
-## Running end-to-end tests
+| Branch                  | Description                   |
+| ----------------------- | ----------------------------- |
+| `main` / `base-1-and-2` | Concepts & data display       |
+| `base-3`                | UI library integration        |
+| `base-4`                | Backend requests              |
+| `base-5`                | Forms & routing               |
+| `base-6`                | Authentication                |
+| `base-7`                | Final polish                  |
+| `final`                 | Completed project (reference) |
 
-For end-to-end (e2e) testing, run:
+Switch to any stage with `git checkout base-N`.
 
-```bash
-ng e2e
-```
+## Credits
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Based on the course project by [@GaetanRouzies](https://github.com/GaetanRouzies).
