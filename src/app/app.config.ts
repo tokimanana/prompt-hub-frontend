@@ -30,7 +30,10 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     providePrimeNG({
       theme: {
-        preset: promptPreset
+        preset: promptPreset,
+        options: {
+          darkModeSelector: '.app-dark'
+        }
       }
     })
   ]
