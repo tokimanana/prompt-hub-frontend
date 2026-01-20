@@ -1,9 +1,19 @@
-import { Component } from '@angular/core'
+import { Component, inject } from '@angular/core'
+import { Card } from 'primeng/card'
+import { InputTextModule } from 'primeng/inputtext'
+import { Textarea } from 'primeng/textarea'
+import { SelectModule } from 'primeng/select'
+import { CategoryService } from '../category-service'
+import { toSignal } from '@angular/core/rxjs-interop'
 
 @Component({
   selector: 'app-prompt-form',
-  imports: [],
+  imports: [Card, InputTextModule, SelectModule, Textarea],
   templateUrl: './prompt-form.html',
   styleUrl: './prompt-form.scss',
 })
-export class PromptForm {}
+export class PromptForm {
+  categoryService = inject(CategoryService)
+
+  categories = toSignal(this.categoryService.getCategoris())
+}

@@ -1,1 +1,22 @@
-<p>prompt-form works!</p>
+<p-card>
+  <form action="">
+    <div class="field">
+      <label for="title" type="text">Title</label>
+      <input type="text" pInputText id="title" class="w-full" />
+    </div>
+    <div class="field">
+      <label for="content" type="text">Content</label>
+      <textarea type="text" pTextarea id="title" class="w-full"></textarea>
+    </div>
+    <div class="field">
+      <label for="category" type="text">Category</label>
+      <p-select
+        inputId="category"
+        class="w-full"
+        [options]="categories()"
+        optionValue="id"
+        optionLabel="name"
+      />
+    </div>
+  </form>
+</p-card>
