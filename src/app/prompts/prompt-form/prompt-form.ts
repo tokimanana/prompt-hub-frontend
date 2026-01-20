@@ -6,7 +6,9 @@ import { SelectModule } from 'primeng/select'
 import { CategoryService } from '../category-service'
 import { toSignal } from '@angular/core/rxjs-interop'
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms'
-import { Button } from "primeng/button";
+import { Button } from 'primeng/button'
+import { PromptService } from '../prompt-service'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-prompt-form',
@@ -15,17 +17,21 @@ import { Button } from "primeng/button";
   styleUrl: './prompt-form.scss',
 })
 export class PromptForm {
+  router = inject(Router)
   categoryService = inject(CategoryService)
+  promptService = inject(PromptService)
 
   categories = toSignal(this.categoryService.getCategoris())
 
   form = new FormGroup({
-    title: new FormControl(''),
-    content: new FormControl(''),
-    categoryId: new FormControl(-1),
+    title: new FormControl('', { nonNullable: true }),
+    content: new FormControl('', { nonNullable: true }),
+    categoryId: new FormControl(-1, { nonNullable: true }),
   })
 
   submit() {
-    console.log(this.form.value);
+    console.log(this.form.value)
+    const prompt = this.form.getRawValue()
+    this.promptService.createPrompt(prompt).subscribe(() => this.router.navigate(['/']))
   }
 }
