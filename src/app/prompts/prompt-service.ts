@@ -11,6 +11,6 @@ export class PromptService {
   baseUrl = environment.apiUrl + 'prompts';
 
   getPrompts(){
-    return this.httpClient.get<Prompt[]>(this.baseUrl)
+    return this.httpClient.get<Prompt[]>(this.baseUrl);
   }
 }
