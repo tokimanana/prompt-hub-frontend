@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core'
+import { Component, effect, inject, input } from '@angular/core'
 import { Card } from 'primeng/card'
 import { InputTextModule } from 'primeng/inputtext'
 import { Textarea } from 'primeng/textarea'
@@ -23,16 +23,40 @@ export class PromptForm {
 
   categories = toSignal(this.categoryService.getCategoris())
 
+  promptId = input<number>()
+
+  constructor() {
+    effect(() => {
+      const promptId = this.promptId()
+      
+      if (promptId) {
+        this.promptService.getPrompt(promptId).subscribe((prompt) => {
+          this.form.patchValue({
+            title: prompt.title,
+            content: prompt.content,
+            categoryId: prompt.category.id,
+          })
+        })
+      }
+    })
+  }
+
   form = new FormGroup({
-    title: new FormControl('', { validators: [Validators.required, Validators.maxLength(30)], nonNullable: true }),
+    title: new FormControl('', {
+      validators: [Validators.required, Validators.maxLength(30)],
+      nonNullable: true,
+    }),
     content: new FormControl('', { validators: [Validators.required], nonNullable: true }),
-    categoryId: new FormControl(-1, { validators: [Validators.required, Validators.min(6)],  nonNullable: true }),
+    categoryId: new FormControl(-1, {
+      validators: [Validators.required, Validators.min(6)],
+      nonNullable: true,
+    }),
   })
 
   submit() {
-    this.form.markAllAsTouched();
-    if(this.form.invalid) return
-    
+    this.form.markAllAsTouched()
+    if (this.form.invalid) return
+
     console.log(this.form.value)
     const prompt = this.form.getRawValue()
     this.promptService.createPrompt(prompt).subscribe(() => this.router.navigate(['/']))

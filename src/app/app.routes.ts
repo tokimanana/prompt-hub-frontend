@@ -16,4 +16,8 @@ export const routes: Routes = [
     path: 'prompts/create',
     component: PromptForm,
   },
+  {
+    path: 'prompts/:promptId/edit',
+    component: PromptForm
+  }
 ]

@@ -4,10 +4,11 @@ import { ButtonModule } from 'primeng/button'
 import { Textarea } from 'primeng/textarea'
 import { TagModule } from 'primeng/tag'
 import { CardModule } from 'primeng/card'
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-prompt-card',
-  imports: [ButtonModule, Textarea, TagModule, CardModule],
+  imports: [ButtonModule, Textarea, TagModule, CardModule, RouterLink],
   templateUrl: './prompt-card.html',
   styleUrl: './prompt-card.scss',
 })
