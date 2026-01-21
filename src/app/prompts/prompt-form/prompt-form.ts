@@ -24,13 +24,15 @@ export class PromptForm {
   categories = toSignal(this.categoryService.getCategoris())
 
   form = new FormGroup({
-    title: new FormControl('', { validators: [Validators.required, Validators.max(30)], nonNullable: true }),
+    title: new FormControl('', { validators: [Validators.required, Validators.maxLength(30)], nonNullable: true }),
     content: new FormControl('', { validators: [Validators.required], nonNullable: true }),
     categoryId: new FormControl(-1, { validators: [Validators.required, Validators.min(6)],  nonNullable: true }),
   })
 
   submit() {
+    this.form.markAllAsTouched();
     if(this.form.invalid) return
+    
     console.log(this.form.value)
     const prompt = this.form.getRawValue()
     this.promptService.createPrompt(prompt).subscribe(() => this.router.navigate(['/']))
