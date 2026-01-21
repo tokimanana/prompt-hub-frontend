@@ -8,11 +8,11 @@ import { toSignal } from '@angular/core/rxjs-interop'
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { Button } from 'primeng/button'
 import { PromptService } from '../prompt-service'
-import { Router } from '@angular/router'
+import { Router, RouterLink } from '@angular/router'
 
 @Component({
   selector: 'app-prompt-form',
-  imports: [Card, InputTextModule, SelectModule, Textarea, ReactiveFormsModule, Button],
+  imports: [Card, InputTextModule, SelectModule, Textarea, ReactiveFormsModule, Button, RouterLink],
   templateUrl: './prompt-form.html',
   styleUrl: './prompt-form.scss',
 })
