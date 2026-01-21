@@ -21,4 +21,8 @@ export class PromptService {
   createPrompt(prompt: {title: string, content: string, categoryId: number} ) {
     return this.httpClient.post<Prompt>(this.baseUrl, prompt);
   }
+
+  updatePrompt(promptId: number, prompt: {title: string, content: string, categoryId: number} ) {
+    return this.httpClient.put<Prompt>(`${this.baseUrl}/${promptId}`, prompt);
+  }
 }

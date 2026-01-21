@@ -28,7 +28,7 @@ export class PromptForm {
   constructor() {
     effect(() => {
       const promptId = this.promptId()
-      
+
       if (promptId) {
         this.promptService.getPrompt(promptId).subscribe((prompt) => {
           this.form.patchValue({
@@ -48,17 +48,25 @@ export class PromptForm {
     }),
     content: new FormControl('', { validators: [Validators.required], nonNullable: true }),
     categoryId: new FormControl(-1, {
-      validators: [Validators.required, Validators.min(6)],
+      validators: [Validators.required, Validators.minLength(6)],
       nonNullable: true,
     }),
   })
 
   submit() {
     this.form.markAllAsTouched()
-    if (this.form.invalid) return
+    if (this.form.invalid) {
+      console.log(this.form.value);
+      return
+    }
 
-    console.log(this.form.value)
     const prompt = this.form.getRawValue()
-    this.promptService.createPrompt(prompt).subscribe(() => this.router.navigate(['/']))
+    const promptId = this.promptId();
+
+    if(promptId) {
+      this.promptService.updatePrompt(promptId, prompt).subscribe(() => this.router.navigate(['/']))
+    } else {
+      this.promptService.createPrompt(prompt).subscribe(() => this.router.navigate(['/']))
+    }
   }
 }
