@@ -25,4 +25,8 @@ export class PromptService {
   updatePrompt(promptId: number, prompt: {title: string, content: string, categoryId: number} ) {
     return this.httpClient.put<Prompt>(`${this.baseUrl}/${promptId}`, prompt);
   }
+
+  deletePrompt(promptId: number) {
+    return this.httpClient.delete(`${this.baseUrl}/${promptId}`)
+  }
 }

@@ -8,27 +8,35 @@
     <div class="field">
       <label for="content" type="text">Content</label>
       <textarea
-      formControlName="content"
-      type="text"
-      pTextarea
-      id="content"
-      class="w-full"
+        formControlName="content"
+        type="text"
+        pTextarea
+        id="content"
+        class="w-full"
       ></textarea>
       <small class="invalid-feedback">The content is required</small>
     </div>
     <div class="field">
       <label for="category">Category</label>
       <p-select
-      formControlName="categoryId"
-      inputId="category"
-      class="w-full"
-      [options]="categories()"
-      optionValue="id"
-      optionLabel="name"
+        formControlName="categoryId"
+        inputId="category"
+        class="w-full"
+        [options]="categories()"
+        optionValue="id"
+        optionLabel="name"
       />
       <small class="invalid-feedback">The category is required</small>
     </div>
     <div class="flex justify-content-end gap-2">
+      <p-button
+        routerLink="/"
+        label="Delete"
+        class="mr-auto"
+        [outlined]="true"
+        severity="danger"
+        (onClick)="deletePrompt()"
+      />
       <p-button routerLink="/" label="Cancel" severity="secondary" />
       <p-button type="submit" [label]="promptId() ? 'Edit' : 'Create'" />
     </div>

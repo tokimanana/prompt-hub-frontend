@@ -69,4 +69,10 @@ export class PromptForm {
       this.promptService.createPrompt(prompt).subscribe(() => this.router.navigate(['/']))
     }
   }
+
+  deletePrompt() {
+    return this.promptService.deletePrompt(this.promptId()!).subscribe(() => {
+      void this.router.navigate(['/'])
+    })
+  }
 }
