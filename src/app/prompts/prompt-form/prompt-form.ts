@@ -48,7 +48,7 @@ export class PromptForm {
     }),
     content: new FormControl('', { validators: [Validators.required], nonNullable: true }),
     categoryId: new FormControl(-1, {
-      validators: [Validators.required, Validators.minLength(6)],
+      validators: [Validators.required, Validators.min(0)],
       nonNullable: true,
     }),
   })
