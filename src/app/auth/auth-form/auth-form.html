@@ -1,1 +1,18 @@
-<p>auth-form works!</p>
+<p-card [header]="mode() === 'login' ? 'Log In' : 'Sign Up'">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="field">
+      <label for="username">Username</label>
+      <input id="username" pInputText type="text" formControlName="username" class="w-full">
+      <small class="invalid-feedback">The username is required</small>
+    </div>
+    <div class="field">
+      <label for="password">Password</label>
+      <p-password inputId="password" formControlName="password" class="w-full" inputStyleClass="w-full"/>
+      <small class="invalid-feedback">The password is required (min. 4 char)</small>
+    </div>
+    <div class="flex gap-2 justify-content-end">
+      <p-button (click)="toogleMode()" severity="secondary" [label]="mode() === 'login' ? 'Create an account' : 'Sign In'"/>
+      <p-button type="submit" [label]="mode() === 'register' ? 'Create an account' : 'Sign In'"/>
+    </div>
+  </form>
+</p-card>
