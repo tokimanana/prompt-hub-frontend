@@ -12,7 +12,7 @@
     </div>
     <div class="flex gap-2 justify-content-end">
       <p-button (click)="toogleMode()" severity="secondary" [label]="mode() === 'login' ? 'Create an account' : 'Sign In'"/>
-      <p-button type="submit" [label]="mode() === 'register' ? 'Create an account' : 'Sign In'"/>
+      <p-button type="submit" [label]="mode() === 'login' ? 'Sign In' : 'Create an account'"/>
     </div>
   </form>
 </p-card>
