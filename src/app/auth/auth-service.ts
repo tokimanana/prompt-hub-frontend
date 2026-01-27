@@ -24,4 +24,10 @@ export class AuthService {
       .post<CurrentUser>(`${this.baseUrl}/register`, { username, password })
       .pipe(tap((currentUser) => this.currentUser.set(currentUser)))
   }
+
+  logout() {
+    return this.httpClient
+      .post(`${this.baseUrl}/logout`, {})
+      .pipe(tap(() => this.currentUser.set(undefined)))
+  }
 }
